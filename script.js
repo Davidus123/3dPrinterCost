@@ -14,10 +14,10 @@ document.getElementById("calculateBtn").addEventListener("click", function() {
     let totalPrice = priceForElectricity + priceForFilament + priceForBlay;
 
     // הצגת תוצאות
-    document.getElementById("totalPrice").innerText = `Total Price: ${totalPrice.toFixed(2)} $`;
-    document.getElementById("blayPrice").innerText = `Blay Cost: ${priceForBlay.toFixed(2)} $`;
-    document.getElementById("plasticPrice").innerText = `Filament Cost: ${priceForFilament.toFixed(2)} $`;
-    document.getElementById("electricityCost").innerText = `Electricity Cost: ${priceForElectricity.toFixed(2)} $`;
+document.getElementById("totalPrice").innerText = `Total Price: ₪ ${totalPrice.toFixed(3)}`;
+document.getElementById("blayPrice").innerText = `Blay Cost: ₪ ${priceForBlay.toFixed(3)}`;
+document.getElementById("plasticPrice").innerText = `Filament Cost: ₪ ${priceForFilament.toFixed(3)}`;
+document.getElementById("electricityCost").innerText = `Electricity Cost: ₪ ${priceForElectricity.toFixed(3)}`;
 
     document.getElementById("results").style.display = "block";
 });

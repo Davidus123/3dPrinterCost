@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D Print Cost Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>3D Print Cost Calculator</h1>
+        <div class="input-card">
+            <label>Hours (H): <input type="number" id="hours" min="0" value="0"></label>
+            <label>Minutes (M): <input type="number" id="minutes" min="0" max="59" value="0"></label>
+            <label>Price of Filament (per kg): <input type="number" id="filamentPrice" min="0" value="0"></label>
+            <label>Filament Used (grams): <input type="number" id="filamentAmount" min="0" value="0"></label>
+            <label>Price of Electricity: <input type="number" id="electricityPrice" step="0.01" min="0" value="0"></label>
+            <button id="calculateBtn">Calculate</button>
+        </div>
+        <div class="result-card" id="results" style="display:none;">
+            <h2>Results</h2>
+            <p id="totalPrice"></p>
+            <p id="blayPrice"></p>
+            <p id="plasticPrice"></p>
+            <p id="electricityCost"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

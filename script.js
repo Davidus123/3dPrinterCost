@@ -1,5 +1,5 @@
 document.getElementById("calculateBtn").addEventListener("click", function() {
-    // קבלת ערכים
+    // קבלת ערכים מהשדות
     let H = parseFloat(document.getElementById("hours").value) || 0;
     let M = parseFloat(document.getElementById("minutes").value) || 0;
     let filamentPrice = parseFloat(document.getElementById("filamentPrice").value) || 0;
@@ -7,17 +7,17 @@ document.getElementById("calculateBtn").addEventListener("click", function() {
     let electricityPrice = parseFloat(document.getElementById("electricityPrice").value) || 0;
     let profitPercent = parseFloat(document.getElementById("profitPercent").value) || 0;
 
-    // חישוב עלות בסיסית
+    // חישוב עלויות
     let time = H + M/60;
     let priceForElectricity = (electricityPrice / 350) * time;
     let priceForFilament = (filamentPrice / 1000) * filamentAmount;
     let priceForBlay = (time / 150) * 50;
     let totalCost = priceForElectricity + priceForFilament + priceForBlay;
 
-    // חישוב מחיר למכירה
-    let sellingPrice = totalCost * (1 + profitPercent / 100);
+    // חישוב מחיר למכירה לפי אחוז רווח
+    let sellingPrice = totalCost + (totalCost * profitPercent / 100);
 
-    // פונקציה לפורמט יפה
+    // פונקציה לפורמט יפה עם ₪ ו-4 ספרות אחרי הנקודה
     const formatILS = (num) => `₪ ${num.toFixed(4)}`;
 
     // הצגת תוצאות

@@ -5,19 +5,28 @@ document.getElementById("calculateBtn").addEventListener("click", function() {
     let filamentPrice = parseFloat(document.getElementById("filamentPrice").value) || 0;
     let filamentAmount = parseFloat(document.getElementById("filamentAmount").value) || 0;
     let electricityPrice = parseFloat(document.getElementById("electricityPrice").value) || 0;
+    let profitPercent = parseFloat(document.getElementById("profitPercent").value) || 0;
 
-    // חישוב
+    // חישוב עלות בסיסית
     let time = H + M/60;
     let priceForElectricity = (electricityPrice / 350) * time;
     let priceForFilament = (filamentPrice / 1000) * filamentAmount;
     let priceForBlay = (time / 150) * 50;
-    let totalPrice = priceForElectricity + priceForFilament + priceForBlay;
+    let totalCost = priceForElectricity + priceForFilament + priceForBlay;
+
+    // חישוב מחיר למכירה
+    let sellingPrice = totalCost * (1 + profitPercent / 100);
+
+    // פונקציה לפורמט יפה
+    const formatILS = (num) => `₪ ${num.toFixed(4)}`;
 
     // הצגת תוצאות
-document.getElementById("totalPrice").innerText = `Total Price: ₪ ${totalPrice.toFixed(3)}`;
-document.getElementById("blayPrice").innerText = `Blay Cost: ₪ ${priceForBlay.toFixed(3)}`;
-document.getElementById("plasticPrice").innerText = `Filament Cost: ₪ ${priceForFilament.toFixed(3)}`;
-document.getElementById("electricityCost").innerText = `Electricity Cost: ₪ ${priceForElectricity.toFixed(3)}`;
+    document.getElementById("totalPrice").innerText = `Total Cost: ${formatILS(totalCost)}`;
+    document.getElementById("sellingPrice").innerText = `Selling Price: ${formatILS(sellingPrice)}`;
+    document.getElementById("blayPrice").innerText = `Blay Cost: ${formatILS(priceForBlay)}`;
+    document.getElementById("plasticPrice").innerText = `Filament Cost: ${formatILS(priceForFilament)}`;
+    document.getElementById("electricityCost").innerText = `Electricity Cost: ${formatILS(priceForElectricity)}`;
 
+    // הצגת התוצאה
     document.getElementById("results").style.display = "block";
 });
